@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DetailController: UIViewController, UICollectionViewDataSource {
+class DetailController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     //MARK: Properties
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,6 +23,7 @@ class DetailController: UIViewController, UICollectionViewDataSource {
         self.heroImage.image = post?.heroImage
         self.products = post?.products
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     //MARK: Actions
@@ -46,5 +47,17 @@ class DetailController: UIViewController, UICollectionViewDataSource {
         return post?.products?.count ?? 0
     }
     
+    //MARK: UICollectionViewFlowDelegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width/2.0
+            return CGSize(width: width, height: width)
+    }
     
+    //MARK: UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = self.products?[indexPath.row] as! Product
+        if let url = URL(string: product.hyperlink) {
+            UIApplication.shared.open(url)
+        }
+    }
 }
