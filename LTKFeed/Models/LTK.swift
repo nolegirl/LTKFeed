@@ -12,14 +12,15 @@ struct LTK {
     let heroImage: UIImage
     let profileId: String
     let caption: String
-    var productIds: [String]?
+    var productIds: [String]
     
     init(dictionary:[String: Any]) {
         let heroImageString = dictionary["hero_image"] as! String
         let url = URL(string: heroImageString)
         self.heroImage = FeedService.loadImage(url: url!)
-        
         self.profileId = dictionary["profile_id"] as! String
         self.caption = dictionary["caption"] as! String
+        
+        self.productIds = dictionary["prodcut_ids"] as! [String]
     }
 }

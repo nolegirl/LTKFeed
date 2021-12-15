@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import UIKit
+
+struct Product {
+    let id: String
+    let imageUrlString: String
+    let productImage:UIImage
+    
+    init(dictionary:[String: Any]) {
+        self.id = dictionary["id"] as! String
+        self.imageUrlString = dictionary["image_url"] as! String
+        let url = URL(string: imageUrlString)
+        self.productImage = FeedService.loadImage(url: url!)
+    }
+}

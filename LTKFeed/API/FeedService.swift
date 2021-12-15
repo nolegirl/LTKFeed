@@ -39,7 +39,6 @@ struct FeedService {
                         print(postLTK)
                         let array = feedArray.copy() as! [LTK]
                         completion(array)
-                    
                     }
 //                    completion(array)
                     print(json)

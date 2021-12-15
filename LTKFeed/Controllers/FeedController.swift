@@ -26,7 +26,6 @@ class FeedController: UITableViewController {
         FeedService.getFeedPosts { ltkArray in
             self.postsArray = ltkArray
         }
-        
     }
     
     //MARK: Actions
@@ -53,4 +52,6 @@ class FeedController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+    
+    //MARK: UITableViewDelegate
 }
