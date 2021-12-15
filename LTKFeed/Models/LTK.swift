@@ -6,15 +6,19 @@
 //
 
 import Foundation
+import UIKit
 
 struct LTK {
-    let heroImage: String
+    let heroImage: UIImage
     let profileId: String
     let caption: String
     var productIds: [String]?
     
     init(dictionary:[String: Any]) {
-        self.heroImage = dictionary["hero_image"] as! String
+        let heroImageString = dictionary["hero_image"] as! String
+        let url = URL(string: heroImageString)
+        self.heroImage = FeedService.loadImage(url: url!)
+        
         self.profileId = dictionary["profile_id"] as! String
         self.caption = dictionary["caption"] as! String
     }

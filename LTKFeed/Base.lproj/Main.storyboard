@@ -26,14 +26,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="wUN-j0-6zJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
+                                            <rect key="frame" x="4" y="4" width="406" height="138"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="wUN-j0-6zJ" secondAttribute="bottom" id="B0f-QL-pa3"/>
-                                        <constraint firstItem="wUN-j0-6zJ" firstAttribute="top" secondItem="WjN-SV-Cub" secondAttribute="top" id="Gft-0r-pNO"/>
-                                        <constraint firstItem="wUN-j0-6zJ" firstAttribute="leading" secondItem="WjN-SV-Cub" secondAttribute="leading" id="RMY-8D-gYK"/>
-                                        <constraint firstAttribute="trailing" secondItem="wUN-j0-6zJ" secondAttribute="trailing" id="xWf-q9-F8S"/>
+                                        <constraint firstAttribute="bottom" secondItem="wUN-j0-6zJ" secondAttribute="bottom" constant="4" id="B0f-QL-pa3"/>
+                                        <constraint firstItem="wUN-j0-6zJ" firstAttribute="top" secondItem="WjN-SV-Cub" secondAttribute="top" constant="4" id="Gft-0r-pNO"/>
+                                        <constraint firstItem="wUN-j0-6zJ" firstAttribute="leading" secondItem="WjN-SV-Cub" secondAttribute="leading" constant="4" id="RMY-8D-gYK"/>
+                                        <constraint firstAttribute="trailing" secondItem="wUN-j0-6zJ" secondAttribute="trailing" constant="4" id="xWf-q9-F8S"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 //https://api-gateway.rewardstyle.com/api/ltk/v2/ltks/?featured=true&limit=20
 
 struct FeedService {
@@ -47,5 +48,15 @@ struct FeedService {
                 }
             }
         }.resume()
+    }
+    
+    static func loadImage(url: URL) -> UIImage {
+        let data = try? Data(contentsOf: url)
+
+        if let imageData = data {
+            let image = UIImage(data: imageData) ?? UIImage()
+            return image
+        }
+        return UIImage()
     }
 }

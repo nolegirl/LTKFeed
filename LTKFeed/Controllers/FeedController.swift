@@ -26,6 +26,7 @@ class FeedController: UITableViewController {
         FeedService.getFeedPosts { ltkArray in
             self.postsArray = ltkArray
         }
+        
     }
     
     //MARK: Actions
@@ -43,8 +44,13 @@ class FeedController: UITableViewController {
           fatalError()
         }
         
-        
+        let post = self.postsArray[indexPath.row]
+        cell.feedImageView.image = post.heroImage
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
     }
 }
