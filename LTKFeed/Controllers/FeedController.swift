@@ -54,4 +54,11 @@ class FeedController: UITableViewController {
     }
     
     //MARK: UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = self.postsArray[indexPath.row]
+        
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "DetailController") as! DetailController
+        controller.post = post
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="owR-et-XjS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fAg-46-7Uh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -9,10 +9,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="N4p-ze-Jtv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jak-vU-dU4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="fAg-46-7Uh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SYZ-ng-l8e">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="owR-et-XjS" kind="relationship" relationship="rootViewController" id="Ba9-kG-cui"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1413" y="38"/>
+        </scene>
         <!--Feed Controller-->
         <scene sceneID="ccz-RC-GvI">
             <objects>
-                <tableViewController id="owR-et-XjS" customClass="FeedController" customModule="LTKFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FeedController" id="owR-et-XjS" customClass="FeedController" customModule="LTKFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="q9b-lY-JuA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +54,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="feedImageView" destination="wUN-j0-6zJ" id="CKd-sc-DlU"/>
+                                    <segue destination="PoD-6C-xb5" kind="showDetail" identifier="detailSegue" trigger="accessoryAction" id="ovH-Hf-d3U"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,24 +63,25 @@
                             <outlet property="delegate" destination="owR-et-XjS" id="3kB-VT-hG2"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Led-Wo-QQR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EP7-SV-LFp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-278.26086956521743" y="23.4375"/>
+            <point key="canvasLocation" x="-528" y="38"/>
         </scene>
         <!--Detail Controller-->
         <scene sceneID="8hf-I4-aay">
             <objects>
-                <viewController id="PoD-6C-xb5" customClass="DetailController" customModule="LTKFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PoD-6C-xb5" customClass="DetailController" customModule="LTKFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KxF-Ya-Bmx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vza-Uz-ad3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="337"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xe1-56-tqV">
-                                <rect key="frame" x="0.0" y="358.5" width="414" height="503.5"/>
+                                <rect key="frame" x="0.0" y="337" width="414" height="471"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L4e-sL-chv">
                                     <size key="itemSize" width="128" height="128"/>
@@ -82,11 +100,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-uT-ysM">
+                                <rect key="frame" x="331" y="8" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="AFq-3u-ZNU"/>
+                                    <constraint firstAttribute="width" constant="75" id="P5D-5R-ADS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GWi-Hc-cbF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Vza-Uz-ad3" firstAttribute="height" secondItem="KxF-Ya-Bmx" secondAttribute="height" multiplier="0.4" id="AEU-zf-c6C"/>
+                            <constraint firstItem="GWi-Hc-cbF" firstAttribute="trailing" secondItem="oCC-uT-ysM" secondAttribute="trailing" constant="8" id="PKo-BG-iId"/>
+                            <constraint firstItem="oCC-uT-ysM" firstAttribute="top" secondItem="GWi-Hc-cbF" secondAttribute="top" constant="8" id="TYM-Pk-lrb"/>
                             <constraint firstItem="Xe1-56-tqV" firstAttribute="top" secondItem="Vza-Uz-ad3" secondAttribute="bottom" id="Xgm-ay-Jpr"/>
                             <constraint firstItem="Xe1-56-tqV" firstAttribute="leading" secondItem="GWi-Hc-cbF" secondAttribute="leading" id="Y1G-au-7JS"/>
                             <constraint firstItem="Vza-Uz-ad3" firstAttribute="leading" secondItem="GWi-Hc-cbF" secondAttribute="leading" id="bUs-Tg-iMx"/>
@@ -98,6 +125,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Xe1-56-tqV" id="79Y-03-8eM"/>
+                        <outlet property="heroImage" destination="Vza-Uz-ad3" id="Qau-Yy-xo2"/>
+                        <outlet property="profileView" destination="oCC-uT-ysM" id="A66-E5-tJt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpH-HX-tSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
