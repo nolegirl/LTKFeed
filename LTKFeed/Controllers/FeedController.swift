@@ -10,13 +10,22 @@ import UIKit
 
 class FeedController: UITableViewController {
     //MARK: Properties
+    var postsArray = [LTK] () {
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        FeedService.getFeedPosts()
+        FeedService.getFeedPosts { ltkArray in
+            self.postsArray = ltkArray
+        }
     }
     
     //MARK: Actions
@@ -25,7 +34,7 @@ class FeedController: UITableViewController {
     
     //MARK: UITableViewDatasource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.postsArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,6 +42,8 @@ class FeedController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! FeedCell? else {
           fatalError()
         }
+        
+        
         
         return cell
     }

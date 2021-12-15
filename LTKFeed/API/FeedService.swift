@@ -9,7 +9,7 @@ import Foundation
 //https://api-gateway.rewardstyle.com/api/ltk/v2/ltks/?featured=true&limit=20
 
 struct FeedService {
-    static func getFeedPosts( ) {
+    static func getFeedPosts(completion: @escaping([LTK]) -> Void) {
         let url:String = "https://api-gateway.rewardstyle.com/api/ltk/v2/ltks/?featured=true&limit=20"
         guard let serviceURL = URL(string: url) else {return}
         var request = URLRequest(url: serviceURL)
@@ -36,6 +36,8 @@ struct FeedService {
                         let postLTK = LTK(dictionary: dictionary)
                         feedArray.add(postLTK)
                         print(postLTK)
+                        let array = feedArray.copy() as! [LTK]
+                        completion(array)
                     
                     }
 //                    completion(array)
