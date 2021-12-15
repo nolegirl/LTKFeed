@@ -27,19 +27,41 @@ struct FeedService {
                 let feedArray = NSMutableArray()
                 
                 do {
+                    var productsIdsArray:[String] = []
+            
                     let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.fragmentsAllowed) as! [String : Any]
                     
                     let feed = json["ltks"] as! NSArray
                     
                     for postDictionary in feed {
                         let dictionary = postDictionary as! [String: Any]
+                        var postLTK = LTK(dictionary: dictionary)
+                       
                         
-                        let postLTK = LTK(dictionary: dictionary)
+                        let productsMutableArray = NSMutableArray()
+                        productsIdsArray = postLTK.productIds
+                        let productsJsonArray = json["products"] as! NSArray
+                        for productDictionary in productsJsonArray {
+                            let dictionary = productDictionary as! [String: Any]
+                            productsIdsArray.forEach { idString in
+                                if dictionary["id"] as! String == idString { //matches a product in that ltk
+                                    let productLTK = Product(dictionary: dictionary)
+                                    productsMutableArray.add(productLTK)
+                                }
+                            }
+                        }
+                        let productsArray = productsMutableArray.copy()
+                        postLTK.products = productsArray as? [Product]
+                        
+                        
                         feedArray.add(postLTK)
                         print(postLTK)
                         let array = feedArray.copy() as! [LTK]
                         completion(array)
                     }
+                    
+                    
+                    
 //                    completion(array)
                     print(json)
                 } catch {
