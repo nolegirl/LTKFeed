@@ -37,7 +37,6 @@ struct FeedService {
                         let dictionary = postDictionary as! [String: Any]
                         var postLTK = LTK(dictionary: dictionary)
                        
-                        
                         let productsMutableArray = NSMutableArray()
                         productsIdsArray = postLTK.productIds
                         let productsJsonArray = json["products"] as! NSArray
@@ -50,9 +49,20 @@ struct FeedService {
                                 }
                             }
                         }
+                        
+                        let profilesJsonArray = json["profiles"] as! NSArray
+                        for profileDictionary in profilesJsonArray {
+                            let profile = profileDictionary as! [String: Any]
+                            let profileId = profile["id"] as! String
+                            if profileId == postLTK.profileId {
+                                let postUser = User(dictionary: profile)
+                                postLTK.poster = postUser
+                                break
+                            }
+                        }
+              
                         let productsArray = productsMutableArray.copy()
                         postLTK.products = productsArray as? [Product]
-                        
                         
                         feedArray.add(postLTK)
                         print(postLTK)
@@ -60,9 +70,6 @@ struct FeedService {
                         completion(array)
                     }
                     
-                    
-                    
-//                    completion(array)
                     print(json)
                 } catch {
                     print(error)

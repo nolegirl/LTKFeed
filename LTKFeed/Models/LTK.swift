@@ -14,6 +14,7 @@ struct LTK {
     let caption: String
     var productIds: [String]
     var products:[Product]?
+    var poster: User?
     
     init(dictionary:[String: Any]) {
         let heroImageString = dictionary["hero_image"] as! String

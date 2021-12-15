@@ -24,6 +24,11 @@ class DetailController: UIViewController, UICollectionViewDataSource, UICollecti
         self.products = post?.products
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        self.profileView.image = post?.poster?.avatar
+        self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2
+        self.profileView.layer.borderWidth = 2.0
+        self.profileView.layer.borderColor = UIColor.white.cgColor
     }
     
     //MARK: Actions
