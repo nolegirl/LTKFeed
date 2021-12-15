@@ -15,6 +15,8 @@ class FeedController: UITableViewController {
     override func viewDidLoad() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        FeedService.getFeedPosts()
     }
     
     //MARK: Actions
