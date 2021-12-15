@@ -90,13 +90,27 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VdY-NU-BJ0">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCell" id="VdY-NU-BJ0" customClass="ProductCell" customModule="LTKFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jsW-JH-vhX">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dMK-p6-YvY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dMK-p6-YvY" firstAttribute="top" secondItem="jsW-JH-vhX" secondAttribute="top" id="6VF-pZ-zmO"/>
+                                                <constraint firstItem="dMK-p6-YvY" firstAttribute="leading" secondItem="jsW-JH-vhX" secondAttribute="leading" id="M1g-2X-iVG"/>
+                                                <constraint firstAttribute="bottom" secondItem="dMK-p6-YvY" secondAttribute="bottom" id="Pbk-77-F6L"/>
+                                                <constraint firstAttribute="trailing" secondItem="dMK-p6-YvY" secondAttribute="trailing" id="gp8-df-ksS"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="productImageView" destination="dMK-p6-YvY" id="0Uq-1T-rSV"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 class ProductCell: UICollectionViewCell {
-    
+    @IBOutlet weak var productImageView: UIImageView!
 }
