@@ -49,8 +49,15 @@ class DetailController: UIViewController, UICollectionViewDataSource, UICollecti
     
     //MARK: UICollectionViewFlowDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width/2.0
-            return CGSize(width: width, height: width)
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(3 - 1))
+
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(3))
+
+        return CGSize(width: size, height: size)
     }
     
     //MARK: UICollectionViewDelegate
